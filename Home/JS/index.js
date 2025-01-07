@@ -8,19 +8,25 @@ function toggleCategory(category) {
       }
     });
   }
-
-  document.querySelectorAll('.project[data-category="sites"] img').forEach(image => {
-    image.addEventListener('click', (e) => {
-      const modal = document.getElementById('imageModal');
-      const modalImage = document.getElementById('modalImage');
-      
-      modalImage.src = e.target.src;
-      modal.classList.add('show');
-    });
-  });
+  
+  function openModal(imageSrc) {
+    const modal = document.getElementById('imageModal');
+    const modalImage = document.getElementById('modalImage');
+  
+    modalImage.src = imageSrc;
+    modal.classList.add('show');
+    document.body.style.overflow = 'hidden';
+  }
   
   function closeModal() {
     const modal = document.getElementById('imageModal');
     modal.classList.remove('show');
+    document.body.style.overflow = '';
   }
+  
+  document.querySelectorAll('.project[data-category="sites"] img').forEach(image => {
+    image.addEventListener('click', () => openModal(image.src));
+  });
+  
+  document.getElementById('imageModal').addEventListener('click', closeModal);
   
