@@ -110,5 +110,8 @@ body {
 }
 
 a {
-    text-decoration: none;
+    text-decoration: none; 
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
 }
+
