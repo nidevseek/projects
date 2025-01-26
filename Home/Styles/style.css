@@ -109,9 +109,12 @@ body {
     display: flex;
 }
 
+.switch:active, .switch.selected {
+  background-color: #181818;
+}
+
 a {
     text-decoration: none; 
     user-select: none;
     -webkit-tap-highlight-color: transparent;
 }
-
