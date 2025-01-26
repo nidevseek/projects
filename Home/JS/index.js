@@ -8,6 +8,13 @@ function toggleCategory(category) {
       }
     });
   }
+
+  document.querySelectorAll('.switch').forEach(button => {
+    button.addEventListener('click', () => {
+      document.querySelectorAll('.switch').forEach(btn => btn.classList.remove('selected'));
+      button.classList.add('selected');
+    });
+  });  
   
   function openModal(imageSrc) {
     const modal = document.getElementById('imageModal');
