@@ -1,13 +1,26 @@
 function toggleCategory(category) {
-    const projects = document.querySelectorAll('.project');
-    projects.forEach(project => {
-      if (category === 'all' || project.dataset.category === category) {
-        project.classList.remove('hidden');
+  const portfolios = document.querySelectorAll('.portfolio');
+  const separator = document.querySelector('.separator');
+
+  portfolios.forEach(portfolio => {
+    if (category === 'all') {
+      portfolio.classList.remove('hidden');
+    } else {
+      if (portfolio.classList.contains(category)) {
+        portfolio.classList.remove('hidden');
       } else {
-        project.classList.add('hidden');
+        portfolio.classList.add('hidden');
       }
-    });
+    }
+  });
+
+  if (category === 'bots') {
+    separator.classList.add('hidden');
+  } else {
+    separator.classList.remove('hidden');
   }
+}
+
 
   document.querySelectorAll('.switch').forEach(button => {
     button.addEventListener('click', () => {
@@ -37,3 +50,23 @@ function toggleCategory(category) {
   
   document.getElementById('imageModal').addEventListener('click', closeModal);
   
+
+  document.querySelectorAll('.project').forEach(card => {
+    card.addEventListener('mousemove', (e) => {
+        const rect = card.getBoundingClientRect();
+        const x = e.clientX - rect.left;
+        const y = e.clientY - rect.top;
+        const centerX = rect.width / 2;
+        const centerY = rect.height / 2;
+        
+        const maxTilt = 5;
+        const tiltX = (centerY - y) / centerY * maxTilt;
+        const tiltY = (x - centerX) / centerX * maxTilt;
+        
+        card.style.transform = `perspective(1000px) scale(1.01) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
+    });
+
+    card.addEventListener('mouseleave', () => {
+        card.style.transform = 'perspective(1000px) scale(1) rotateX(0deg) rotateY(0deg)';
+    });
+});
