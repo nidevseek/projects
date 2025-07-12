@@ -216,7 +216,7 @@ a {
   }
 
   .portfolio.bots {
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
   }
 
   .project[data-category="sites"] {
