@@ -32,17 +32,33 @@ function toggleCategory(category) {
   function openModal(imageSrc) {
     const modal = document.getElementById('imageModal');
     const modalImage = document.getElementById('modalImage');
+    const modalContent = document.querySelector('.modal-content');
   
     modalImage.src = imageSrc;
+    modal.style.display = 'flex';
+    modal.classList.remove('hide');
     modal.classList.add('show');
     document.body.style.overflow = 'hidden';
+  
+    modalContent.style.animation = 'none';
+    modalContent.offsetHeight;
+    modalContent.style.animation = 'slideUp 0.5s ease forwards';
   }
+  
   
   function closeModal() {
     const modal = document.getElementById('imageModal');
+  
     modal.classList.remove('show');
+    modal.classList.add('hide');
     document.body.style.overflow = '';
+  
+    setTimeout(() => {
+      modal.classList.remove('hide');
+      modal.style.display = 'none';
+    }, 400);
   }
+  
   
   document.querySelectorAll('.project[data-category="sites"] img').forEach(image => {
     image.addEventListener('click', () => openModal(image.src));
