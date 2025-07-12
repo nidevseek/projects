@@ -11,7 +11,7 @@ body {
     min-height: 100vh;
   }
 
-  .content {
+.content {
   display: flex;
   gap: 10px; 
   margin: 20px;
@@ -163,8 +163,30 @@ body {
     cursor: pointer;
     transition: transform 0.3s ease;
   }
-
   
+  @keyframes slideUp {
+    from {
+      transform: translateY(50px);
+      opacity: 0;
+    }
+    to {
+      transform: translateY(0);
+      opacity: 1;
+    }
+  }
+  
+  .modal.hide {
+    animation: fadeOut 0.4s ease forwards;
+  }
+  
+  @keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+  }
 
 a {
     text-decoration: none; 
@@ -186,7 +208,7 @@ a {
 
   .portfolio {
     width: 100%;
-    margin-bottom: 15px;
+    margin-bottom: 5px;
   }
 
   .portfolio.sites {
@@ -194,7 +216,7 @@ a {
   }
 
   .portfolio.bots {
-    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)) !important;
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)) !important;
   }
 
   .project[data-category="sites"] {
@@ -215,7 +237,7 @@ a {
   .project[data-category="sites"] .project_content {
     order: 2;
     width: 100%;
-    padding: 15px 10px 20px 10px;
+    padding: 10px 0 0 10px;
   }
 
   .project img {
@@ -223,16 +245,16 @@ a {
   }
 
   .project_content {
-    padding: 10px;
+    padding: 15px;
   }
 
   .project_title {
-    font-size: 1.3em;
+    font-size: 1.5em;
   }
 
   .project_description {
-    font-size: 0.9em;
-    color: #999;
+    font-size: 1em;
+    color: #b4b4b4;
   }
 
   .modal-content {
