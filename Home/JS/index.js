@@ -67,18 +67,18 @@ function toggleCategory(category) {
   document.getElementById('imageModal').addEventListener('click', closeModal);
   
 
-  document.querySelectorAll('.project').forEach(card => {
+  document.querySelectorAll('.project[data-category="sites"]').forEach(card => {
     card.addEventListener('mousemove', (e) => {
         const rect = card.getBoundingClientRect();
         const x = e.clientX - rect.left;
         const y = e.clientY - rect.top;
         const centerX = rect.width / 2;
         const centerY = rect.height / 2;
-        
+
         const maxTilt = 5;
         const tiltX = (centerY - y) / centerY * maxTilt;
         const tiltY = (x - centerX) / centerX * maxTilt;
-        
+
         card.style.transform = `perspective(1000px) scale(1.01) rotateX(${tiltX}deg) rotateY(${tiltY}deg)`;
     });
 
